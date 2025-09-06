@@ -50,7 +50,7 @@ async def create_ticket_panel(ctx,
                               options: dict,
                               category,
                               embed_color=0xFFD1DC,
-                              author_icon="https://i.imgur.com/6rJX5KT.png"):
+                              author_icon=""):
 
     class TicketDropdown(discord.ui.Select):
 
@@ -84,7 +84,7 @@ async def create_ticket_panel(ctx,
                 topic = topic.replace(emoji, "")
             topic = topic.strip()
 
-            channel_name = f"{user_name}의-{topic}채널".replace(" ", "-").lower()
+            channel_name = f"{user_nick}의-{topic}".replace(" ", "-").lower()
 
             overwrites = {
                 interaction.guild.default_role:
@@ -299,6 +299,7 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
 
