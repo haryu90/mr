@@ -61,7 +61,7 @@ async def create_ticket_panel(ctx,
                                      emoji=options[label].get("emoji"))
                 for label in options
             ]
-            super().__init__(placeholder="<a:91:1413821943471276116> 원하는 항목을 선택해주세요!",
+            super().__init__(placeholder=" 원하는 항목을 선택해주세요!",
                              options=select_options,
                              min_values=1,
                              max_values=1)
@@ -300,6 +300,7 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
 
