@@ -61,7 +61,7 @@ async def create_ticket_panel(ctx,
                                      emoji=options[label].get("emoji"))
                 for label in options
             ]
-            super().__init__(placeholder="✨ 원하는 항목을 선택해주세요!",
+            super().__init__(placeholder="<a:91:1413821943471276116> 원하는 항목을 선택해주세요!",
                              options=select_options,
                              min_values=1,
                              max_values=1)
@@ -135,7 +135,7 @@ async def create_ticket_panel(ctx,
     embed = discord.Embed(title=panel_title,
                           description=" 아래 메뉴에서 원하는 항목을 선택하여 티켓을 생성해주세요!",
                           color=embed_color)
-    embed.set_author(name="<a:91:1413821943471276116> 말랑이 티켓봇 ")
+    embed.set_author(name="말랑이 티켓봇 ")
     embed.set_footer(text="말랑코튼 전용 티켓함")
 
     await ctx.send(embed=embed, view=TicketView())
@@ -300,5 +300,6 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
