@@ -34,7 +34,7 @@ class CloseButton(discord.ui.View):
         super().__init__(timeout=None)
 
     @discord.ui.button(label="티켓 닫기",
-                       style=discord.ButtonStyle.red,
+                       style=discord.ButtonStyle.black,
                        emoji="<a:a9:1413823289771561040>")
     async def close_ticket(self, interaction: discord.Interaction,
                            button: discord.ui.Button):
@@ -115,11 +115,10 @@ async def create_ticket_panel(ctx,
                 name=channel_name, overwrites=overwrites, category=category)
 
             embed = discord.Embed(
-                title="🎟️ 티켓이 생성되었어요!",
+                title=" 티켓이 생성되었어요!",
                 description=
                 f"{interaction.user.mention}님, 잠시만 기다려주세요. 담당자가 곧 도와드릴게요!",
                 color=embed_color)
-            embed.set_thumbnail(url=author_icon)
             embed.set_footer(text="문의해주셔서 감사합니다!")
 
             await ticket_channel.send(embed=embed, view=CloseButton())
@@ -300,6 +299,7 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
 
