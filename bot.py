@@ -270,7 +270,8 @@ async def 몽글몽글(ctx):
 
 
 # 환경변수에서 토큰 불러오기
-TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
