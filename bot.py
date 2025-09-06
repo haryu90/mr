@@ -34,12 +34,11 @@ class CloseButton(discord.ui.View):
         super().__init__(timeout=None)
 
     @discord.ui.button(label="티켓 닫기",
-                       style=discord.ButtonStyle.gray,
+                       style=discord.ButtonStyle.gray,  # ButtonStyle.black은 없음
                        emoji="<a:a9:1413823289771561040>")
     async def close_ticket(self, interaction: discord.Interaction,
                            button: discord.ui.Button):
-        await interaction.response.send_message("티켓을 닫는 중입니다...",
-                                                ephemeral=True)
+        await interaction.response.send_message("티켓을 닫는 중입니다...", ephemeral=True)
         await asyncio.sleep(2)
         await interaction.channel.delete()
 
@@ -299,6 +298,7 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
 
