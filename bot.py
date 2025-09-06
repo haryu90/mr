@@ -35,7 +35,7 @@ class CloseButton(discord.ui.View):
 
     @discord.ui.button(label="티켓 닫기",
                        style=discord.ButtonStyle.red,
-                       emoji=" <a:a9:1413823289771561040> ")
+                       emoji="<a:a9:1413823289771561040>")
     async def close_ticket(self, interaction: discord.Interaction,
                            button: discord.ui.Button):
         await interaction.response.send_message("티켓을 닫는 중입니다...",
@@ -300,6 +300,7 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
 
