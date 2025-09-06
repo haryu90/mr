@@ -83,7 +83,7 @@ async def create_ticket_panel(ctx,
                 topic = topic.replace(emoji, "")
             topic = topic.strip()
 
-            channel_name = f"{user_nick}의-{topic}".replace(" ", "-").lower()
+            channel_name = f"{user_name}의-{topic}".replace(" ", "-").lower()
 
             overwrites = {
                 interaction.guild.default_role:
@@ -298,6 +298,7 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
 
