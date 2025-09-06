@@ -35,7 +35,7 @@ class CloseButton(discord.ui.View):
 
     @discord.ui.button(label="티켓 닫기",
                        style=discord.ButtonStyle.red,
-                       emoji="🗑️")
+                       emoji=" <a:a9:1413823289771561040> ")
     async def close_ticket(self, interaction: discord.Interaction,
                            button: discord.ui.Button):
         await interaction.response.send_message("티켓을 닫는 중입니다...",
@@ -133,9 +133,9 @@ async def create_ticket_panel(ctx,
             self.add_item(TicketDropdown())
 
     embed = discord.Embed(title=panel_title,
-                          description="🌸 아래 메뉴에서 원하는 항목을 선택하여 티켓을 생성해주세요!",
+                          description=" 아래 메뉴에서 원하는 항목을 선택하여 티켓을 생성해주세요!",
                           color=embed_color)
-    embed.set_author(name="말랑이 티켓봇", icon_url=author_icon)
+    embed.set_author(name="<a:91:1413821943471276116> 말랑이 티켓봇 ")
     embed.set_footer(text="말랑코튼 전용 티켓함")
 
     await ctx.send(embed=embed, view=TicketView())
@@ -174,18 +174,18 @@ async def 하류(ctx):
 
     options = {
         "하류 문의사항": {
-            "emoji": "🧡",
+            "emoji": "<:b4:1413825908594315364>",
             "roles": [],
             "users": [1409169549819121839]
         },
         "하류 구매하기": {
-            "emoji": "🧡",
+            "emoji": "<:b4:1413825908594315364>",
             "roles": [],
             "users": [1409169549819121839]
         }
     }
     await create_ticket_panel(ctx,
-                              "하류 티켓함",
+                              "<a:a2:1413823326689693737> 하류 티켓함",
                               options,
                               category,
                               embed_color=0xC6E2FF)
@@ -200,18 +200,18 @@ async def 유메(ctx):
 
     options = {
         "유메 문의사항": {
-            "emoji": "🌊",
+            "emoji": "<:b2:1413825915900657664>",
             "roles": [],
             "users": [1016659263055216661]
         },
         "유메 구매하기": {
-            "emoji": "🌊",
+            "emoji": "<:b2:1413825915900657664>",
             "roles": [],
             "users": [1016659263055216661]
         }
     }
     await create_ticket_panel(ctx,
-                              "유메 티켓함",
+                              "<a:a6:1413823303717617735> 유메 티켓함",
                               options,
                               category,
                               embed_color=0xE0BBE4)
@@ -226,18 +226,18 @@ async def 토끼(ctx):
 
     options = {
         "토끼 문의사항": {
-            "emoji": "🐰",
+            "emoji": "<:b1:1413825913782796371>",
             "roles": [],
             "users": [965997368975712356]
         },
         "토끼 구매하기": {
-            "emoji": "🐰",
+            "emoji": "<:b1:1413825913782796371>",
             "roles": [],
             "users": [965997368975712356]
         }
     }
     await create_ticket_panel(ctx,
-                              "토끼 티켓함",
+                              "<a:a8:1413823294104408134> 토끼 티켓함",
                               options,
                               category,
                               embed_color=0xFFDAC1)
@@ -252,21 +252,47 @@ async def 몽글몽글(ctx):
 
     options = {
         "몽글몽글 문의사항": {
-            "emoji": "☁️",
+            "emoji": "<:b3:1413825911312355388>",
             "roles": [],
             "users": [672060781289799702]
         },
         "몽글몽글 구매하기": {
-            "emoji": "☁️",
+            "emoji": "<:b3:1413825911312355388>",
             "roles": [],
             "users": [672060781289799702]
         }
     }
     await create_ticket_panel(ctx,
-                              "몽글몽글 티켓함",
+                              "<a:a5:1413823308373295114> 몽글몽글 티켓함",
                               options,
                               category,
                               embed_color=0xB5EAEA)
+
+@bot.command()
+async def 역지(ctx, member: discord.Member):
+    role_id = 1413577757409153155  # 부여할 역할 ID
+    role = ctx.guild.get_role(role_id)
+    if not role:
+        await ctx.send("❌ 역할을 찾을 수 없습니다.")
+        return
+
+    # 허용 역할 ID (명령어 사용 가능 역할)
+    allowed_role_ids = [1413547785902620844]  # 여기에 허용할 역할 ID 넣기
+
+    # 권한 체크
+    author_roles = [r.id for r in ctx.author.roles]
+    if (not ctx.author.guild_permissions.manage_roles and 
+        not any(rid in allowed_role_ids for rid in author_roles)):
+        await ctx.send("❌ 이 명령어를 사용할 권한이 없습니다.")
+        return
+
+    try:
+        await member.add_roles(role)
+        await ctx.send(f"{member.mention}님 `{role.name}`지급 완료! ")
+    except discord.Forbidden:
+        await ctx.send("❌ 권한이 부족해서 역할을 부여할 수 없습니다.")
+    except Exception as e:
+        await ctx.send(f"오류가 발생했습니다: {e}")
 
 
 # 환경변수에서 토큰 불러오기
@@ -274,4 +300,5 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
