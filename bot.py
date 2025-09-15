@@ -216,7 +216,7 @@ async def 유메(ctx):
 
 
 @bot.command()
-async def 토끼(ctx):
+async def 톢(ctx):
     category = ctx.channel.category
     if not category:
         await ctx.send("❌ 이 채널은 카테고리 안에 있어야 합니다!")
@@ -298,6 +298,7 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
 
