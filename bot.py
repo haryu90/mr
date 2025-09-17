@@ -232,6 +232,11 @@ async def 토끼(ctx):
             "emoji": "<:01:1413855049179992194>",
             "roles": [],
             "users": [965997368975712356]
+        },
+        "토끼 교환권": {
+            "emoji": "<:01:1413855049179992194>",
+            "roles": [],
+            "users": [965997368975712356]
         }
     }
     await create_ticket_panel(ctx,
@@ -298,6 +303,7 @@ TOKEN = os.getenv("TOKEN__")
 
 keep_alive()
 bot.run(TOKEN)
+
 
 
 
